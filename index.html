@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./main.css">
+    <title>A vs B</title>
+</head>
+
+<body>    
+    <form id="form">
+        <h1>A ou B</h1>
+        <div>
+            <label for="A">Campo A</label>
+            <input type="number" id="A">
+        </div>
+        <div>
+            <label for="B">Campo B</label>
+            <input type="number" id="B">
+        </div>
+        <button type="submit">Enviar</button>
+        <p id="message"></p>
+    </form>
+
+    <script>
+        document.getElementById("form").addEventListener("submit", function(event) {
+            event.preventDefault(); 
+
+            const campoA = parseFloat(document.getElementById("A").value);
+            const campoB = parseFloat(document.getElementById("B").value);
+            const mensagem = document.getElementById("message");
+
+            if (isNaN(campoA) || isNaN(campoB)) {
+                mensagem.textContent = "Por favor, insira números válidos.";
+                mensagem.style.color = "red";
+                return;
+            }
+
+            if (campoB > campoA) {
+                mensagem.textContent = "Formulário válido!";
+                mensagem.style.color = "green";
+            } else {
+                mensagem.textContent = "Formulário inválido!";
+                mensagem.style.color = "red";
+            }
+        });
+    </script>
+</body>
+</html>
